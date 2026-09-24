@@ -25,10 +25,10 @@ A support triage agent that reads each incoming ticket, classifies it by urgency
 
 ## Product Decisions
 
-- **Ticket intake**: customers submit tickets directly within this product; there is no integration with an external helpdesk or shared inbox. *assumed*
-- **Actors**: the only human role is the support agent; there is no separate team-lead/admin role and no customer-facing account area beyond submitting a ticket and receiving its reply. *assumed*
-- **Reply delivery**: once a support agent approves a drafted reply, the product sends it to the customer itself, by email, using the organization's internal transactional email service. *assumed*
-- **Urgency scale**: tickets are classified into four levels — Low, Medium, High, Critical — so the queue can be sorted meaningfully. *assumed*
+- **Ticket intake**: customers submit tickets directly within this product; there is no integration with an external helpdesk or shared inbox.
+- **Actors**: the only human role is the support agent; there is no separate team-lead/admin role and no customer-facing account area beyond submitting a ticket and receiving its reply.
+- **Reply delivery**: once a support agent approves a drafted reply, the product sends it to the customer itself, by email, using the organization's internal transactional email service.
+- **Urgency scale**: tickets are classified into four levels — Low, Medium, High, Critical — so the queue can be sorted meaningfully.
 - **Sign-in**: support agents sign in via SSO through Thunder, the platform identity provider (organization default). Customers submitting tickets do not need an account.
 
 ## Out of Scope
