@@ -7,10 +7,29 @@
   "appPath": "triage-agent",
   "entrypoint": "deployment/ai-agent",
   "exposure": "intranet",
-  "dependencies": [
-    { "kind": "platform-resource", "name": "memory-db", "resourceType": "postgres-cnpg" }
+  "stories": [
+    2,
+    4
   ],
   "description": "Given a ticket's subject and body, classifies its urgency (Low/Medium/High/Critical) and drafts a reply for a support agent to review. Called only by ticket-api, never directly by a browser or the console. Holds no ticket data beyond its own conversation store.",
-  "stories": [2, 4],
-  "skillsPinned": ["agent-building"]
+  "dependencies": [
+    {
+      "kind": "platform-resource",
+      "name": "memory-db",
+      "resourceType": "postgres-cnpg",
+      "wiring": {
+        "ref": "amp-verify-agent-memory-db",
+        "envBindings": {
+          "dbname": "MEMORY_DB_DBNAME",
+          "host": "MEMORY_DB_HOST",
+          "password": "MEMORY_DB_PASSWORD",
+          "port": "MEMORY_DB_PORT",
+          "user": "MEMORY_DB_USER"
+        }
+      }
+    }
+  ],
+  "skillsPinned": [
+    "agent-building"
+  ]
 }
