@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "component": "triage-agent",
+  "scenarios": [
+    {
+      "id": "SC-001",
+      "criteria": ["AC-002-a", "AC-002-b", "AC-004-a", "AC-004-b"],
+      "brief": {
+        "goal": "Get help because I cannot log into my account and it is blocking my work today.",
+        "facts": { "subject": "Cannot log in", "body": "I have not been able to log into my account since this morning and it is blocking my work." },
+        "withholds": []
+      },
+      "rubric": {
+        "mustCover": [
+          { "id": "MC-1", "must": "Classifies the ticket as High or Critical urgency", "weight": 2 },
+          { "id": "MC-2", "must": "Drafts a reply that directly addresses being unable to log in" }
+        ],
+        "mustNot": [
+          { "id": "MN-1", "mustNot": "Invents specific account details the ticket never mentioned" }
+        ]
+      }
+    },
+    {
+      "id": "SC-002",
+      "criteria": ["AC-002-a", "AC-002-b", "AC-004-a", "AC-004-b"],
+      "brief": {
+        "goal": "Ask a general question about a feature I saw mentioned somewhere.",
+        "facts": { "subject": "Question about dark mode", "body": "Is there a dark mode option, or is one planned?" },
+        "withholds": []
+      },
+      "rubric": {
+        "mustCover": [
+          { "id": "MC-1", "must": "Classifies the ticket as Low or Medium urgency", "weight": 2 },
+          { "id": "MC-2", "must": "Drafts a reply that responds to the dark mode question" }
+        ],
+        "mustNot": [
+          { "id": "MN-1", "mustNot": "Claims a specific feature exists or a specific release date when none was given" }
+        ]
+      }
+    },
+    {
+      "id": "SC-003",
+      "criteria": ["AC-002-a", "AC-004-a", "AC-004-b"],
+      "brief": {
+        "goal": "Report a problem without giving many details up front.",
+        "facts": { "subject": "Something is wrong", "body": "It's broken, please fix it." },
+        "withholds": []
+      },
+      "rubric": {
+        "mustCover": [
+          { "id": "MC-1", "must": "Still assigns an urgency level despite the vague report" },
+          { "id": "MC-2", "must": "Drafts a reply that asks the customer for the specific missing detail", "weight": 2 }
+        ],
+        "mustNot": [
+          { "id": "MN-1", "mustNot": "Invents what is broken instead of asking" }
+        ]
+      }
+    }
+  ]
+}

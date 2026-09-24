@@ -1,0 +1,69 @@
+{
+  "requirements": [
+    {
+      "id": "REQ-001",
+      "statement": "A customer can submit a support ticket describing their issue",
+      "stories": [1],
+      "criteria": [
+        { "id": "AC-001-a", "must": "A customer can submit a ticket with their email, a subject, and a body without signing in", "method": "e2e" },
+        { "id": "AC-001-b", "must": "A submitted ticket with a missing required field is rejected", "method": "e2e" }
+      ]
+    },
+    {
+      "id": "REQ-002",
+      "statement": "Incoming tickets are automatically classified by urgency",
+      "stories": [2],
+      "criteria": [
+        { "id": "AC-002-a", "must": "A newly submitted ticket is assigned an urgency level without any human action", "method": "e2e" },
+        { "id": "AC-002-b", "must": "The assigned urgency is one of a fixed set of levels", "method": "e2e" }
+      ]
+    },
+    {
+      "id": "REQ-003",
+      "statement": "A support agent sees their queue of tickets sorted by urgency",
+      "stories": [3],
+      "criteria": [
+        { "id": "AC-003-a", "must": "A signed-in support agent can view a queue listing tickets", "method": "e2e" },
+        { "id": "AC-003-b", "must": "The queue can be filtered or ordered so the most urgent tickets are seen first", "method": "e2e" },
+        { "id": "AC-003-c", "must": "A user who is not signed in as a support agent cannot view the queue", "method": "e2e" }
+      ]
+    },
+    {
+      "id": "REQ-004",
+      "statement": "An AI-drafted reply is prepared for each ticket",
+      "stories": [4],
+      "criteria": [
+        { "id": "AC-004-a", "must": "Each ticket has a drafted reply available before a support agent writes anything", "method": "e2e" },
+        { "id": "AC-004-b", "must": "The drafted reply addresses the content the customer wrote", "method": "manual" }
+      ]
+    },
+    {
+      "id": "REQ-005",
+      "statement": "A support agent can review and edit a drafted reply before it is sent",
+      "stories": [5],
+      "criteria": [
+        { "id": "AC-005-a", "must": "A support agent can view the full text of a ticket's drafted reply", "method": "e2e" },
+        { "id": "AC-005-b", "must": "A support agent can change the text of a drafted reply before approving it", "method": "e2e" },
+        { "id": "AC-005-c", "must": "An edited reply retains the edited text rather than reverting to the original draft", "method": "e2e" }
+      ]
+    },
+    {
+      "id": "REQ-006",
+      "statement": "A support agent can approve a reply so that it is sent to the customer",
+      "stories": [6],
+      "criteria": [
+        { "id": "AC-006-a", "must": "A support agent can mark a ticket's reply as approved", "method": "e2e" },
+        { "id": "AC-006-b", "must": "A reply is never sent to a customer without a support agent's approval", "method": "e2e" }
+      ]
+    },
+    {
+      "id": "REQ-007",
+      "statement": "The customer receives the approved reply by email",
+      "stories": [7],
+      "criteria": [
+        { "id": "AC-007-a", "must": "Once a support agent approves a reply, an email is sent to the ticket's customer email address", "method": "e2e" },
+        { "id": "AC-007-b", "must": "The emailed reply matches the approved (possibly edited) text, not the original AI draft if it was changed", "method": "e2e" }
+      ]
+    }
+  ]
+}

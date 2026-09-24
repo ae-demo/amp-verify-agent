@@ -1,0 +1,16 @@
+{
+  "name": "triage-agent",
+  "type": "ai-agent",
+  "version": "0.1.0",
+  "language": "TypeScript",
+  "buildpack": "docker",
+  "appPath": "triage-agent",
+  "entrypoint": "deployment/ai-agent",
+  "exposure": "intranet",
+  "dependencies": [
+    { "kind": "platform-resource", "name": "memory-db", "resourceType": "postgres-cnpg" }
+  ],
+  "description": "Given a ticket's subject and body, classifies its urgency (Low/Medium/High/Critical) and drafts a reply for a support agent to review. Called only by ticket-api, never directly by a browser or the console. Holds no ticket data beyond its own conversation store.",
+  "stories": [2, 4],
+  "skillsPinned": ["agent-building"]
+}

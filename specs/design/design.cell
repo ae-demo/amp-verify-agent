@@ -1,0 +1,21 @@
+title amp-verify-agent
+
+component triage-webapp as "Triage Webapp" web-application
+component ticket-api as "Ticket API" service
+component triage-agent as "Triage Agent" ai-agent
+component ticket-db as "Ticket Database" database
+component memory-db as "Triage Memory DB" database
+
+east user-auth as "Thunder Auth" identity-server
+south email-service as "Email Service" service
+
+north -> triage-webapp
+north -> ticket-api
+
+triage-webapp -> ticket-api
+triage-webapp -> user-auth
+ticket-api -> user-auth
+ticket-api -> triage-agent
+ticket-api -> ticket-db
+ticket-api -> email-service
+triage-agent -> memory-db
