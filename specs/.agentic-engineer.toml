@@ -1,0 +1,4 @@
+apiVersion = "agentic-engineer/v1"
+name = "amp-verify-agent"
+createdAt = "2026-09-24T12:13:37Z"
+idea = "A support triage agent that reads incoming tickets, classifies them by urgency, and drafts replies for a human to approve"
