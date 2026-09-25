@@ -1,0 +1,39 @@
+apiVersion: openchoreo.dev/v1alpha1
+metadata:
+  name: ticket-api
+
+endpoints:
+  - name: http
+    type: HTTP
+    port: 9090
+    basePath: /
+    visibility:
+      - project
+      - internal
+      - external
+
+dependencies:
+  endpoints:
+    - component: amp-verify-agent-triage-agent
+      name: http
+      visibility: project
+      envBindings:
+        address: TRIAGE_AGENT_URL
+  resources:
+    - ref: amp-verify-agent-ticket-db
+      envBindings:
+        dbname: TICKET_DB_DBNAME
+        host: TICKET_DB_HOST
+        password: TICKET_DB_PASSWORD
+        port: TICKET_DB_PORT
+        user: TICKET_DB_USER
+    - ref: amp-verify-agent-user-auth
+      envBindings:
+        client_id: USER_AUTH_CLIENT_ID
+        issuer: USER_AUTH_ISSUER
+        jwks_url: USER_AUTH_JWKS_URL
+        resource: USER_AUTH_RESOURCE
+        scopes: USER_AUTH_SCOPES
+    - ref: amp-verify-agent-6f87ade2
+      envBindings:
+        EMAIL_SERVICE_BASE_URL: EMAIL_SERVICE_BASE_URL

@@ -1,0 +1,21 @@
+apiVersion: openchoreo.dev/v1alpha1
+metadata:
+  name: triage-agent
+
+endpoints:
+  - name: http
+    type: HTTP
+    port: 9090
+    basePath: /
+    visibility:
+      - project
+
+dependencies:
+  resources:
+    - ref: amp-verify-agent-memory-db
+      envBindings:
+        dbname: MEMORY_DB_DBNAME
+        host: MEMORY_DB_HOST
+        password: MEMORY_DB_PASSWORD
+        port: MEMORY_DB_PORT
+        user: MEMORY_DB_USER
