@@ -15,7 +15,12 @@ COPY --from=builder /app/dist /usr/share/nginx/html
 # plain COPY here would land the file root-owned and undo the base image's
 # non-root write access, so the entrypoint's `sed -i` below would 13-fail.
 COPY --chown=101:101 nginx/default.conf /etc/nginx/conf.d/default.conf
-COPY nginx/15-aep-api-proxy.sh /docker-entrypoint.d/15-aep-api-proxy.sh
+# --chown matches the base image's active UID:GID for the same reason as
+# default.conf above: a plain COPY lands the file root-owned (BuildKit always
+# defaults new copies to root regardless of the active USER), and the
+# following RUN executes as uid 101 — chmod on a root-owned file it doesn't
+# own then fails the build with "Operation not permitted".
+COPY --chown=101:101 nginx/15-aep-api-proxy.sh /docker-entrypoint.d/15-aep-api-proxy.sh
 RUN chmod +x /docker-entrypoint.d/15-aep-api-proxy.sh
 EXPOSE 9090
 CMD ["nginx", "-g", "daemon off;"]
