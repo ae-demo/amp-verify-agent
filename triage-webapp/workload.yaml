@@ -26,3 +26,5 @@ dependencies:
         jwks_url: USER_AUTH_JWKS_URL
         resource: USER_AUTH_RESOURCE
         scopes: USER_AUTH_SCOPES
+
+# Redeploy marker so this cycle's diff includes the component.

@@ -19,3 +19,5 @@ dependencies:
         password: MEMORY_DB_PASSWORD
         port: MEMORY_DB_PORT
         user: MEMORY_DB_USER
+
+# Redeploy marker so this cycle's diff includes the component.

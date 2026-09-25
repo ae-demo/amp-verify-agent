@@ -37,3 +37,5 @@ dependencies:
     - ref: amp-verify-agent-6f87ade2
       envBindings:
         EMAIL_SERVICE_BASE_URL: EMAIL_SERVICE_BASE_URL
+
+# Redeploy marker so this cycle's diff includes the component.
